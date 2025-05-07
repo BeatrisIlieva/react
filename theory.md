@@ -66,18 +66,38 @@ Keys help React to effectively detect what change has happened.
 -   keys must be unique
 -   keys must be unchangeable so they can keep the identity of the elements between renders
 
-
 A component has 3 lifecycle phases:
+
 1. Mounting
-3. Updating
-4. Unmounting
+2. Updating
+3. Unmounting
 
 **useEffect** hook accepts a dependency array in which is described for what changes to listen so as to execute.
 
-If useEffect does not have a dependency array it will execute on every render. 
+If useEffect does not have a dependency array it will execute on every render.
 
 Empty dependency array means that the effect will execute on `mount`.
 
-When useEffect has a non empty dependency array it will execute every time in which some of its dependency updates. If useEffect has any variable inside its definition it must eb present in the dependency array. 
+When useEffect has a non empty dependency array it will execute every time in which some of its dependency updates. If useEffect has any variable inside its definition it must eb present in the dependency array.
 
-On unmount `useEffect` needs a clean up function. 
+On unmount `useEffect` needs a clean up function.
+
+## Forms
+
+Two types of forms in Rect:
+
+1. Controlled -> controlled by React (states in stored in React)
+   The value are kept i state in React. With onChange event we get the updated values and the state gets updated base on the updated values.
+   In order to have a controlled form we need both `value` and `onChangeHandler` to handle the `onChange` event. The value cannot be neither `null` nor `undefined`
+2. Uncontrolled -> controlled by DOM (input values stay in the DOM)
+
+**useRef**
+
+With `useRef` we can create a reference to a DOM element.
+Both `useState` and `useRef` keep state.
+The difference between `useState` and `useRef` is that `useState` rerenders the component while `useRef` does not.
+`useRef` does not trigger rerender of the component?
+
+Function that starts a transition is called an `action`. We start a transition using `useTransition` or `useActionState` hooks.
+
+`useTransition` allows us to tell React to prioritisize lower some updates. So it can handle more urgent ones.
