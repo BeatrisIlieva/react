@@ -1,0 +1,18 @@
+{
+    "e32a4ace-8450-4c0a-9567-7c9f8d39f211": {
+        "title": "Cube",
+        "category": "Fighitng",
+        "maxLevel": "7",
+        "imageUrl": "https://images.unsplash.com/photo-1553481187-be93c21490a9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdhbWV8ZW58MHx8MHx8fDA%3D",
+        "summary": "super game",
+        "_id": "e32a4ace-8450-4c0a-9567-7c9f8d39f211"
+    },
+    "0c5b8c41-fffd-416d-9631-3720405cbe79": {
+        "title": "PlayStation",
+        "category": "Fun",
+        "maxLevel": "3",
+        "imageUrl": "https://plus.unsplash.com/premium_photo-1687854992749-e15cba89631d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Z2FtZXxlbnwwfHwwfHx8MA%3D%3D",
+        "summary": "Very pleasant ",
+        "_id": "0c5b8c41-fffd-416d-9631-3720405cbe79"
+    }
+}
