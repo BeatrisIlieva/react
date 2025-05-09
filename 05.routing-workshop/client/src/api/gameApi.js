@@ -1,6 +1,6 @@
 import request from '../utils/request';
 
-const baseUrl = 'http://localhost:3030/jsonstore/users';
+const baseUrl = 'http://localhost:3030/data/games';
 
 export default {
     async getAll() {
@@ -15,15 +15,24 @@ export default {
         return request.get(`${baseUrl}/${gameId}`);
     },
 
-    create(gameData) {
-        return request.post(baseUrl, gameData);
-    },
-
     delete(gameId) {
         return request.delete(`${baseUrl}/${gameId}`);
     },
 
     update(gameId, gameData) {
-        return request.put(`${baseUrl}/${gameId}`, { ...gameData, _id: gameId });
+        return request.put(`${baseUrl}/${gameId}`, {
+            ...gameData,
+            _id: gameId
+        });
+    }
+};
+
+export const useCreateGame = () => {
+    const create = (gameData) => {
+        return request.post(baseUrl, gameData);
+    };
+
+    return {
+        create,
     }
 };

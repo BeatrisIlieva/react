@@ -1,12 +1,14 @@
 import { useParams, useNavigate, Link } from 'react-router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import gameService from '../../services/gameService';
 
 import CommentsShow from '../comments-show/CommentsShow';
 import CommentsCreate from '../comments-create/CommentsCreate';
 import commentService from '../../services/commentService';
+import { UserContext } from '../../contexts/UserContexts';
 
-export default function GameDetails({ email }) {
+export default function GameDetails() {
+    const { email } = useContext(UserContext);
     const { gameId } = useParams();
     const [game, setGame] = useState({});
     const [comments, setComments] = useState([]);
@@ -22,8 +24,8 @@ export default function GameDetails({ email }) {
     };
 
     const commentCreateHandler = (newComment) => {
-        setComments(state => [...state, newComment])
-    }
+        setComments((state) => [...state, newComment]);
+    };
 
     return (
         <section id='game-details'>
@@ -38,9 +40,13 @@ export default function GameDetails({ email }) {
 
                 <p className='text'>{game.summary}</p>
 
-                    <CommentsShow comments={comments} />
+                <CommentsShow comments={comments} />
 
-                <CommentsCreate email={email} gameId={gameId} onCreate={commentCreateHandler}/>
+                <CommentsCreate
+                    email={email}
+                    gameId={gameId}
+                    onCreate={commentCreateHandler}
+                />
 
                 <div className='buttons'>
                     <Link to={`/games/${gameId}/update`} className='button'>

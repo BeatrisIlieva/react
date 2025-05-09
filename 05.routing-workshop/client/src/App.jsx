@@ -10,29 +10,43 @@ import GameEdit from './components/game-edit/GameEdit';
 import GameDetails from './components/game-details/GameDetails';
 import GameCatalog from './components/game-catalog/GameCatalog';
 
-function App() {
-    const [email, setEmail] = useState('');
+import { UserContext } from './contexts/UserContexts';
+import Logout from './components/logout/Logout';
 
-    const userLoginHandler = (email) => {
-        setEmail(email);
+function App() {
+    const [authData, setAuthData] = useState({});
+
+    const userLoginHandler = (resultData) => {
+        setAuthData(resultData);
     };
 
-    return (
-        <div id='box'>
-            <Header />
+    console.log(authData);
 
-            <main id='main-content'>
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/login' element={<Login onLogin={userLoginHandler} />} />
-                    <Route path='/register' element={<Register />} />
-                    <Route path='/games' element={<GameCatalog />} />
-                    <Route path='/games/create' element={<GameCreate />} />
-                    <Route path='/games/:gameId/details' element={<GameDetails email={email} />} />
-                    <Route path='/games/:gameId/update' element={<GameEdit />} />
-                </Routes>
-            </main>
-        </div>
+    return (
+        <UserContext.Provider value={{ ...authData, userLoginHandler }}>
+            <div id='box'>
+                <Header />
+
+                <main id='main-content'>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/games' element={<GameCatalog />} />
+                        <Route path='/games/create' element={<GameCreate />} />
+                        <Route
+                            path='/games/:gameId/details'
+                            element={<GameDetails />}
+                        />
+                        <Route
+                            path='/games/:gameId/update'
+                            element={<GameEdit />}
+                        />
+                        <Route path='/logout' element={<Logout />} />
+                    </Routes>
+                </main>
+            </div>
+        </UserContext.Provider>
     );
 }
 
