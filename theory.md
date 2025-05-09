@@ -101,3 +101,15 @@ The difference between `useState` and `useRef` is that `useState` rerenders the 
 Function that starts a transition is called an `action`. We start a transition using `useTransition` or `useActionState` hooks.
 
 `useTransition` allows us to tell React to prioritisize lower some updates. So it can handle more urgent ones.
+
+## Hooks
+
+`Hooks` allow functional components to have state and side effects -> `useState`, `useEffect`
+
+`Hooks` allows us to reuse logic in multiple components.
+
+`Hooks` can be used only in functional components and other hooks.
+
+We use `AbortController` when we need to terminate unnecessary request.
+
+`Hooks` cannot be written within a nested scope. They must be written within the top scope.
